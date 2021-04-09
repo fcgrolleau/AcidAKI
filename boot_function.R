@@ -67,13 +67,13 @@ mdif <- function(d, i=1:nrow(d), cj="ventilfree") {
 
 binout_ard_boot <- function(d, i=1:nrow(d), cj="hospitalmortality", event="Décédé") {
         z<-d[i,]
-        ARD_val<- mean(z[z$bras=="STRATEGIE PRECOCE",cj]==event)-mean(z[z$bras=="STRATEGIE D ATTENTE",cj]==event)
+        ARD_val<- mean(z[z$bras=="STRATEGIE PRECOCE",cj]==event, na.rm=T)-mean(z[z$bras=="STRATEGIE D ATTENTE",cj]==event, na.rm=T)
         return(ARD_val)
 }
 
 binout_rr_boot <- function(d, i=1:nrow(d), cj="hospitalmortality", event="Décédé") {
         z<-d[i,]
-        RR_val<- mean(z[z$bras=="STRATEGIE PRECOCE",cj]==event)/mean(z[z$bras=="STRATEGIE D ATTENTE",cj]==event)
+        RR_val<- mean(z[z$bras=="STRATEGIE PRECOCE",cj]==event, na.rm=T)/mean(z[z$bras=="STRATEGIE D ATTENTE",cj]==event, na.rm=T)
         return(RR_val)
 }
 
